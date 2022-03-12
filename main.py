@@ -31,13 +31,14 @@ while len(guessed_states) < 50:
         writing_turtle.write(answer_state)
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 of the States", prompt="What's another state name?:").title()
 
-for state in guessed_states:
-    if state in all_states:
-        all_states.remove(i)
+# for state in guessed_states:
+#     if state in all_states:
+#         all_states.remove(i)
+missed_states_list = [state for state in all_states if not in guessed_states]
 missed_states = {
-    'You missed these states': all_states
+    'You missed these states': missed_states_list
 }
-print(missed_states)
+# print(missed_states)
 missed_states_data = pandas.DataFrame(missed_states)
 missed_states_data.to_csv("Missed State.csv")
 turtle.mainloop()
